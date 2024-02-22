@@ -5,7 +5,7 @@ import Pizzas from "./Pizzas";
 import CustomerInfo from "./CustomerInfo";
 import Checkout from "./Checkout";
 import { useSelector } from "react-redux";
-import Admin from "Admin"
+import Admin from "./Admin";
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -20,7 +20,7 @@ function App() {
       <div className='App'>
         <header className='App-header'>
           <h1 className='App-title'>Prime Pizza</h1>
-          <p className="total">🛒 Total: ${total}</p>
+          <p className='total'>🛒 Total: ${total}</p>
         </header>
 
         {/* <img src='images/pizza_photo.png' />
@@ -36,18 +36,14 @@ function App() {
           <Checkout />
         </Route>
         <Route exact path='/'>
-          <Link to="/customerInfo">
-            <button className="Next-button">NEXT</button>
+          <Link to='/customerInfo'>
+            <button className='Next-button'>NEXT</button>
           </Link>
         </Route>
-        <Route exact path='/customerInfo'>
-          <Link to="/checkout">
-            <button className="Next-button">NEXT</button>
-          </Link>
+
+        <Route exact path='/admin'>
+          <Admin />
         </Route>
-<Route exact path='/admin'>
-  <Admin />
-</Route>
       </div>
     </Router>
   );

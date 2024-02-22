@@ -15,7 +15,8 @@ export default function CustomerInfo() {
   const updateForm = (e, t) => {
     setFormData({ ...formData, [t]: e.target.value });
   };
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     dispatch({ type: "ADD_CUSTOMER", payload: { ...formData } });
     setFormData({
       name: "",
