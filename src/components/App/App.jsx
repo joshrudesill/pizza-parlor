@@ -1,11 +1,11 @@
 import React from "react";
-import axios from "axios";
 import "./App.css";
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 import Pizzas from "./Pizzas";
 import CustomerInfo from "./CustomerInfo";
 import Checkout from "./Checkout";
 import { useSelector } from "react-redux";
+import Admin from "Admin"
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -20,7 +20,7 @@ function App() {
       <div className='App'>
         <header className='App-header'>
           <h1 className='App-title'>Prime Pizza</h1>
-          <p>{total}</p>
+          <p className="total">🛒 Total: ${total}</p>
         </header>
 
         {/* <img src='images/pizza_photo.png' />
@@ -35,6 +35,19 @@ function App() {
         <Route path='/checkout'>
           <Checkout />
         </Route>
+        <Route exact path='/'>
+          <Link to="/customerInfo">
+            <button className="Next-button">NEXT</button>
+          </Link>
+        </Route>
+        <Route exact path='/customerInfo'>
+          <Link to="/checkout">
+            <button className="Next-button">NEXT</button>
+          </Link>
+        </Route>
+<Route exact path='/admin'>
+  <Admin />
+</Route>
       </div>
     </Router>
   );
