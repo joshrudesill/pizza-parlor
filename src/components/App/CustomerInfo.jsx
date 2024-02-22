@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 export default function CustomerInfo() {
   const [formData, setFormData] = useState({
@@ -6,13 +8,28 @@ export default function CustomerInfo() {
     address: "",
     city: "",
     zip: "",
-    orderType: "Pickup",
+    orderType: "pickup",
   });
+  const dispatch = useDispatch();
+  const history = useHistory();
   const updateForm = (e, t) => {
     setFormData({ ...formData, [t]: e.target.value });
   };
+  const handleSubmit = () => {
+    dispatch({ type: "ADD_CUSTOMER", payload: { ...formData } });
+    setFormData({
+      name: "",
+      address: "",
+      city: "",
+      zip: "",
+      orderType: "pickup",
+    });
+    // ^ probably not strictly necessary
+
+    history.push("/checkout");
+  };
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <input value={formData.name} onChange={(e) => updateForm(e, "name")} />
       <input
         value={formData.address}
@@ -20,10 +37,14 @@ export default function CustomerInfo() {
       />
       <input value={formData.city} onChange={(e) => updateForm(e, "city")} />
       <input value={formData.zip} onChange={(e) => updateForm(e, "zip")} />
-      <select>
-        <option>Pickup</option>
-        <option>Delivery</option>
+      <select
+        value={formData.orderType}
+        onChange={(e) => updateForm(e, "orderType")}
+      >
+        <option value={"pickup"}>Pickup</option>
+        <option value={"delivery"}>Delivery</option>
       </select>
+      <button>Next</button>
     </form>
   );
 }

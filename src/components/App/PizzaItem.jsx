@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function PizzaItem({
   name,
@@ -8,6 +8,7 @@ export default function PizzaItem({
   id,
 }) {
   const dispatch = useDispatch();
+  const orderID = useSelector((state) => state.orderID);
   const addToCart = () => {
     dispatch({
       type: "ADD_TO_CART",
@@ -17,11 +18,13 @@ export default function PizzaItem({
         price,
         image_path,
         id,
+        orderID,
+        quantity: 1,
       },
     });
   };
   return (
-    <ol>
+    <div>
       <li>
         <img src={image_path} width={200} />
       </li>
@@ -29,6 +32,6 @@ export default function PizzaItem({
       <li>{description}</li>
       <li>{price}</li>
       <button onClick={addToCart}>Add to Cart</button>
-    </ol>
+    </div>
   );
 }
