@@ -20,13 +20,23 @@ const cart = (state = [], action) => {
   return state;
 }
 
-const customerInfo = (state = [], action) => {
+const customerInfo = (state = {}, action) => {
   if(action.type === 'ADD_CUSTOMER') {
     console.log(`customer info added: ${action.payload}`);
-    return [...state, action.payload];
+    return [action.payload];
   }
   if(action.type === 'CLEAR_CUSTOMER') {
-    return state = [];
+    return state = {};
+  }
+  return state;
+}
+
+const orderID = (state = 0, action) => {
+  if(action.type === 'SET_ORDERID') {
+    return action.payload;
+  }
+  if(action.type === 'CLEAR_ORDERID') {
+    return state = 0;
   }
   return state;
 }
@@ -35,7 +45,8 @@ const store = createStore(
   combineReducers({
     pizzas,
     cart,
-    customerInfo 
+    customerInfo,
+    orderID
   }),
   applyMiddleware(logger),
 );

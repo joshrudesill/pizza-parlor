@@ -1,6 +1,53 @@
-import { useSelector } from "react-redux";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Checkout() {
   const cart = useSelector((state) => state.cart);
-  return <>{JSON.stringify(cart)}</>;
+  const history = useHistory();
+  const orderID = useSelector((state) => state.orderID);
+  const { name, address, city, zip, orderType } = useSelector(
+    (state) => state.customerInfo
+  );
+  const dispatch = useDispatch();
+  const checkout = () => {
+    axios
+      .post("/api/order", {
+        customer_name: name,
+        street_address: address,
+        city,
+        zip,
+        type: orderType,
+        total: cart.reduce((ac, cv) => ac + Number(cv.price), 0),
+        pizzas: cart,
+      })
+      .then((_) => {
+        dispatch({ type: "CLEAR_CART" });
+        dispatch({ type: "CLEAR_CUSTOMER" });
+        dispatch({ type: "RESET_ORDERID" });
+        history.push("/");
+      })
+      .catch((e) => console.error(e));
+  };
+  return (
+    <>
+      <h1>Step 3: Checkout</h1>
+      <div>
+        <p>{name}</p>
+        <p>{address}</p>
+        <p>
+          {city} {zip}
+        </p>
+      </div>
+      <div>
+        {cart.map((item) => (
+          <>
+            <p>{item.name}</p>
+            <p>{item.price}</p>
+          </>
+        ))}
+      </div>
+      <button onClick={checkout}>Checkout</button>
+    </>
+  );
 }
