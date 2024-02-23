@@ -19,7 +19,7 @@ background: linear-gradient(90deg, rgba(253,29,29,1) 0%, rgba(255,177,177,1) 50%
   background-color: rgb(16,193,13);
   color: black;
   height: 30px;
-  width: 60px;
+  width: 100px;
   font-size: large;
   text-align: center;
 }
@@ -31,4 +31,13 @@ background: linear-gradient(90deg, rgba(253,29,29,1) 0%, rgba(255,177,177,1) 50%
 }
 p {
   color: black
+}
+
+.Back-button {
+  background-color: rgb(193, 13, 13);
+  color: black;
+  height: 30px;
+  width: 100px;
+  font-size: large;
+  text-align: center;
 }
