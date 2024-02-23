@@ -37,3 +37,12 @@
 p {
   color: black;
 }
+
+.Back-button {
+  background-color: rgb(193, 13, 13);
+  color: black;
+  height: 30px;
+  width: 100px;
+  font-size: large;
+  text-align: center;
+}

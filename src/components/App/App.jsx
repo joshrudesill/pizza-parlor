@@ -47,11 +47,7 @@ function App() {
           </Link>
         </Route>
 
-        <Route exact path='/customerInfo'>
-          <Link to="/checkout">
-            <button className="Next-button">NEXT 👉</button>
-          </Link>
-        </Route>
+
         
 <Route exact path='/admin'>
   <Admin />
