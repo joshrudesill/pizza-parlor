@@ -18,10 +18,10 @@ background: linear-gradient(90deg, rgba(253,29,29,1) 0%, rgba(255,177,177,1) 50%
 .Next-button {
   background-color: rgb(16,193,13);
   color: black;
-  height: 50px;
-  width: 100px;
-  font-size: x-large;
-  
+  height: 30px;
+  width: 60px;
+  font-size: large;
+  text-align: center;
 }
 
 .total{

@@ -1,13 +1,15 @@
 import React from "react";
 import "./App.css";
-import { HashRouter as Router, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Route, Link, useHistory } from "react-router-dom";
 import Pizzas from "./Pizzas";
 import CustomerInfo from "./CustomerInfo";
 import Checkout from "./Checkout";
 import { useSelector } from "react-redux";
 import Admin from "./Admin";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 function App() {
+  const history = useHistory();
   const cart = useSelector((state) => state.cart);
   const total = useSelector((state) => {
     if (state.cart.length > 0) {
@@ -15,8 +17,11 @@ function App() {
     }
     return 0;
   });
+  const goBack = () => {
+    history.goBack()
+  }
   return (
-    <Router>
+   
       <div className='App'>
         <header className='App-header'>
           <h1 className='App-title'>Prime Pizza</h1>
@@ -40,6 +45,8 @@ function App() {
             <button className='Next-button'>NEXT</button>
           </Link>
         </Route>
+
+        <button onClick={goBack}>Back</button>
         <Route exact path='/customerInfo'>
           <Link to="/checkout">
             <button className="Next-button">NEXT</button>
@@ -49,7 +56,7 @@ function App() {
   <Admin />
 </Route>
       </div>
-    </Router>
+    
   );
 }
 
