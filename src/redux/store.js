@@ -14,7 +14,7 @@ const cart = (state = [], action) => {
     return [...state, action.payload];
   }
   if (action.type === "CLEAR_CART") {
-    return (state = []);
+    return [];
   }
   return state;
 };

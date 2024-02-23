@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom";
 
 export default function Checkout() {
   const cart = useSelector((state) => state.cart);
@@ -33,6 +33,7 @@ export default function Checkout() {
     <>
       <h1>Step 3: Checkout</h1>
       <div>
+        <h3>Address</h3>
         <p>{name}</p>
         <p>{address}</p>
         <p>
@@ -40,6 +41,7 @@ export default function Checkout() {
         </p>
       </div>
       <div>
+        <h3>Order Items</h3>
         {cart.map((item) => (
           <div key={item.id}>
             <p>{item.name}</p>
