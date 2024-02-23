@@ -24,7 +24,7 @@ export default function Checkout() {
       .then((_) => {
         dispatch({ type: "CLEAR_CART" });
         dispatch({ type: "CLEAR_CUSTOMER" });
-        dispatch({ type: "RESET_ORDERID" });
+        dispatch({ type: "CLEAR_ORDERID" });
         history.push("/");
       })
       .catch((e) => console.error(e));
@@ -41,10 +41,10 @@ export default function Checkout() {
       </div>
       <div>
         {cart.map((item) => (
-          <>
+          <div key={item.id}>
             <p>{item.name}</p>
             <p>{item.price}</p>
-          </>
+          </div>
         ))}
       </div>
       <button onClick={checkout}>Checkout</button>

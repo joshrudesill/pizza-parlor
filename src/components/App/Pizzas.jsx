@@ -19,7 +19,7 @@ export default function Pizzas() {
   return (
     <>
       {pizzas.map((p) => (
-        <PizzaItem {...p} />
+        <PizzaItem {...p} key={p.id} />
       ))}
       <Link to='/customerInfo'>Next</Link>
     </>
