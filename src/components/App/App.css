@@ -24,7 +24,7 @@
   background-color: rgb(16, 193, 13);
   color: black;
   height: 30px;
-  width: 60px;
+  width: 100px;
   font-size: large;
   text-align: center;
 }
@@ -36,4 +36,13 @@
 }
 p {
   color: black;
+}
+
+.Back-button {
+  background-color: rgb(193, 13, 13);
+  color: black;
+  height: 30px;
+  width: 100px;
+  font-size: large;
+  text-align: center;
 }

@@ -40,18 +40,15 @@ function App() {
         <Route path='/checkout'>
           <Checkout />
         </Route>
+        <button className='Back-button' onClick={goBack}>👈 BACK</button>
         <Route exact path='/'>
           <Link to='/customerInfo'>
-            <button className='Next-button'>NEXT</button>
+            <button className='Next-button'>NEXT 👉</button>
           </Link>
         </Route>
 
-        <button onClick={goBack}>Back</button>
-        <Route exact path='/customerInfo'>
-          <Link to="/checkout">
-            <button className="Next-button">NEXT</button>
-          </Link>
-        </Route>
+
+        
 <Route exact path='/admin'>
   <Admin />
 </Route>
