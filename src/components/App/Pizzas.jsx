@@ -1,8 +1,7 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import PizzaItem from "./PizzaItem";
-import { useEffect, useId, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
 export default function Pizzas() {
   const dispatch = useDispatch();
   const pizzas = useSelector((state) => state.pizzas);
@@ -21,7 +20,6 @@ export default function Pizzas() {
       {pizzas.map((p) => (
         <PizzaItem {...p} key={p.id} />
       ))}
-      <Link to='/customerInfo'>Next</Link>
     </>
   );
 }
