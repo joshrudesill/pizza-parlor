@@ -45,9 +45,9 @@ function App() {
             <button className="Next-button">NEXT</button>
           </Link>
         </Route>
-<Route exact path='/admin'>
-  <Admin />
-</Route>
+        <Route exact path='/admin'>
+          <Admin />
+        </Route>
       </div>
     </Router>
   );
